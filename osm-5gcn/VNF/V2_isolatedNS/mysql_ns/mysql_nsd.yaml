@@ -1,0 +1,24 @@
+nsd:
+  nsd:
+  - id: mysql_nsd
+    name: mysql_nsd
+    designer: TJK
+    description: mysql NS
+    version: '1.0'
+    vnfd-id:
+    - mysql_vnfd
+
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: 5gcore-mysql
+        vnfd-id: mysql_vnfd
+        virtual-link-connectivity:
+        - virtual-link-profile-id: mgmtnet
+          constituent-cpd-id:
+          - constituent-base-element-id: mysql
+            constituent-cpd-id: mysql-mgmt-ext
+    virtual-link-desc:
+    - id: mgmtnet
+      mgmt-network: true
+      vim-network-name: osm-ext

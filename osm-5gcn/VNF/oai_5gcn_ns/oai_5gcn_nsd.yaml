@@ -1,0 +1,89 @@
+nsd:
+  nsd:
+  - id: oai_5gcn_nsd
+    name: oai_5gcn_nsd
+    designer: TJK
+    description: 5G Core Netwoek on Kubernetes
+    version: '1.0'
+
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: 5gcore-amf
+        vnfd-id: oai_amf_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: amf
+            constituent-cpd-id: amf-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-smf
+        vnfd-id: oai_smf_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: smf
+            constituent-cpd-id: smf-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-ausf
+        vnfd-id: oai_ausf_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: ausf
+            constituent-cpd-id: ausf-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-nrf
+        vnfd-id: oai_nrf_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: nrf
+            constituent-cpd-id: nrf-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-udm
+        vnfd-id: oai_udm_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: udm
+            constituent-cpd-id: udm-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-udr
+        vnfd-id: oai_udr_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: udr
+            constituent-cpd-id: udr-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: 5gcore-spgwu_tiny
+        vnfd-id: oai_spgwu_tiny_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: spgwu_tiny
+            constituent-cpd-id: spgwu_tiny-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+      - id: mysql
+        vnfd-id: mysql_vnfd
+        virtual-link-connectivity:
+        - constituent-cpd-id:
+          - constituent-base-element-id: mysql
+            constituent-cpd-id: mysql-mgmt-ext
+          virtual-link-profile-id: mgmtnet
+    virtual-link-desc:
+    - id: mgmtnet
+      mgmt-network: true
+      vim-network-name: osm-ext
+    # - id: datanet
+      # vim-network-name: #TODO
+    vnfd-id:
+    - oai_amf_vnfd
+    - oai_smf_vnfd
+    - oai_ausf_vnfd
+    - oai_nrf_vnfd
+    - oai_udm_vnfd
+    - oai_udr_vnfd
+    - oai_spgwu_tiny_vnfd
+    - mysql_vnfd
+    # ns-configuration:
+    #   relation:
+    #     - name: relation1
+    #       provider:
+    #         vnf-profile-id: mysql_vnfd
+    #         kdu-resource-profile-id: mysql_kdu
+    #         endpoint: orchestrator

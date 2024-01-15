@@ -1,0 +1,31 @@
+vnfd:
+  id: oai_amf_vnfd
+  product-name: oai_amf_vnfd
+  description: 5gcore amf
+  provider: TJK
+  version: '1.1'
+  mgmt-cp: amf-mgmt-ext
+
+  df:
+  - id: default-df
+    # instantiation-level:
+    # - id: default-instantiation-level
+    #   vdu-level:
+    #   - vdu-id: oai_amf_vnfd-VM
+    #     number-of-instances: 1
+    # vdu-profile:
+    # - id: oai_amf_vnfd-VM
+    #   min-number-of-instances: 1
+    #   max-number-of-instances: 1
+    # At least one VDU need to be specified
+    # Additional VDUs can be created by copying the
+    # VDU descriptor below
+  kdu:
+  - name: oai_amf_kdu
+    helm-chart: TJKkking/oai-amf
+  k8s-cluster:
+    nets:
+    - id: mgmtnet
+  ext-cpd:
+  - id: amf-mgmt-ext
+    k8s-cluster-net: mgmtnet

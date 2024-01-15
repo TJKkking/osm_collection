@@ -1,0 +1,24 @@
+nsd:
+  nsd:
+  - id: oai_spgwu_tiny_nsd
+    name: oai_spgwu_tiny_nsd
+    designer: TJK
+    description: oai_spgwu_tiny_vnfd
+    version: '1.0'
+    vnfd-id:
+    - oai_spgwu_tiny_vnfd
+
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: 5gcore-spgwu_tiny
+        vnfd-id: oai_spgwu_tiny_vnfd
+        virtual-link-connectivity:
+        - virtual-link-profile-id: mgmtnet
+          constituent-cpd-id:
+          - constituent-base-element-id: spgwu
+            constituent-cpd-id: spgwu-mgmt-ext
+    virtual-link-desc:
+    - id: mgmtnet
+      mgmt-network: true
+      vim-network-name: osm-ext

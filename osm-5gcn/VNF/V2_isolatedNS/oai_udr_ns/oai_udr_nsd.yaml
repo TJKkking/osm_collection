@@ -1,0 +1,24 @@
+nsd:
+  nsd:
+  - id: oai_udr_nsd
+    name: oai_udr_nsd
+    designer: TJK
+    description: udr_nsd
+    version: '1.0'
+    vnfd-id:
+    - oai_udr_vnfd
+
+    df:
+    - id: default-df
+      vnf-profile:
+      - id: 5gcore-udr
+        vnfd-id: oai_udr_vnfd
+        virtual-link-connectivity:
+        - virtual-link-profile-id: mgmtnet
+          constituent-cpd-id:
+          - constituent-base-element-id: udr
+            constituent-cpd-id: udr-mgmt-ext
+    virtual-link-desc:
+    - id: mgmtnet
+      mgmt-network: true
+      vim-network-name: osm-ext
